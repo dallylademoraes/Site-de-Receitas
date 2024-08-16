@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand&family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+main {
+    padding: 100px;
+    width: 1150px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+article {
+    display: flex;
+    gap: 60px;
+}
+
+img {
+    width: 520px;
+    height: auto;
+    border-radius: 25px;
+}
+
+.recipe-name {
+    font-size: 40px;
+    font-family: "Inter", sans-serif;
+}
+
+.recipe-serves {
+    font-size: 18px;
+}
+
+.recipe-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+i {
+    cursor: pointer;
+}
+.recipe-description {
+    font-size: 17px;
+}
+
+.recipe-info p {
+    margin-top: 10px;
+}
