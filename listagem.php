@@ -10,7 +10,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0;
-      background-color: gray;
+      background-color: white;
     }
     .search-bar {
       margin-right: 100px;
@@ -32,7 +32,7 @@
       padding: 0;
     }
     nav {
-      background-color: #333;
+      background-color:green ;
     }
     .menu {
       list-style: none;
@@ -51,7 +51,7 @@
       font-size: 16px;
     }
     .menu a:hover {
-      background-color: #555;
+      background-color: #66BB6A;
     }
     .content {
       padding: 20px;
@@ -66,12 +66,15 @@
       border-bottom: 2px solid #333;
       padding-bottom: 10px;
     }
+    .welcome {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <header>
     <div>
-      <h1 style="margin-left: 60px;">KiDelicia</h1>
+      <h1 style="margin-left: 60px;"><a style="text-decoration: none; color: inherit" href="listagem.php">KiDelicia</a></h1>
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Procure uma receita, um ingrediente, um tipo de prato ...">
@@ -97,11 +100,15 @@
   </nav>
   <div class="content">
    <?php  
-    // Obtém a categoria da URL, se disponível
+    // url
     $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-    // Verifica a categoria e inclui a seção correspondente
-    if ($category === 'bolosetortas') {
+    if (empty($category)) {
+      echo '<section class="welcome show">';
+      echo '<h2>Bem-vindo ao KiDelicia!</h2>';
+      echo '<p>Escolha uma categoria acima para começar a explorar nossas receitas deliciosas.</p>';
+      echo '</section>';
+    } elseif ($category === 'bolosetortas') {
       echo '<section id="bolosetortas" class="show">';
       echo '<h2>Bolos e Tortas</h2>';
       echo '<div class="recipes-list">';
