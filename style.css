@@ -66,4 +66,10 @@ h2 {
 .welcome {
   text-align: center;
 }
+.header-container{
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+}
+
 

@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listagem de Receitas</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
   </head>
 <body>
   <header>
-    <div>
-      <h1 style="margin-left: 60px;"><a style="text-decoration: none; color: inherit" href="listagem.php">KiDelicia</a></h1>
+    <div class="header-container" >
+      <i class="fa-solid fa-utensils"></i>
+      <h1>KiDelicia</a></h1>
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Procure uma receita, um ingrediente, um tipo de prato ...">
