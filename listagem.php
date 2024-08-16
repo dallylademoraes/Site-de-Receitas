@@ -10,8 +10,12 @@
 <body>
   <header>
     <div class="header-container" >
+      <a href="listagem.php">
       <i class="fa-solid fa-utensils"></i>
-      <h1>KiDelicia</a></h1>
+      </a>
+      <a href="listagem.php">
+      <h1>KiDelicia</h1>
+      </a>
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Procure uma receita, um ingrediente, um tipo de prato ...">
