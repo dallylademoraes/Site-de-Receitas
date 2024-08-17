@@ -6,6 +6,7 @@
 
 :root {
     --cor-primaria: #149c00;
+    --secundaria: #4bbc1e;
 
 }
 
@@ -197,6 +198,14 @@ h3 {
     margin-top: 60px;
 }
 
+article .txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+}
+
 li {
     font-size: 18px;
     font-family: "Pontano Sans", sans-serif;
@@ -216,6 +225,61 @@ li {
 ol {
     margin-top: 30px;
 }
+
+/*Discover*/
+
+.discover-recipe {
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#discover-bottom {
+    margin-bottom: 60px;
+}
+
+.recipe-item {
+    width: 300px;
+    height: 300px;
+    margin-top: 60px;
+    transition: transform 0.3s ease;
+}
+
+.bar {
+    width: 100%;
+    height: auto;
+    min-height: 40px;
+    background-color: var(--cor-primaria);
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.bar a:hover {
+    cursor: pointer;
+}
+
+
+.recipe-item:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
+
+
 
 /*Footer*/
 footer {

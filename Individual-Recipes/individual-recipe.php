@@ -89,7 +89,27 @@
                </ol>
            </div>
        </article>
+
+       <article id="discover-bottom">
+           <h3 class="txt">Descobrir mais receitas</h3>
+           <div class="discover-recipe">
+               <div class="recipe-item">
+                   <img src="../imagens/recipe-item/img.png" alt="" width="300px">
+                   <div class="bar">
+                        <p><a>BOLO DE LARANJA</a></p>
+                   </div>
+               </div>
+               <div class="recipe-item">
+                   <img src="../imagens/recipe-item/img.png" alt="" width="300px">
+                   <div class="bar">
+                       <p><a>BOLO DE LARANJA</a></p>
+                   </div>
+               </div>
+           </div>
+       </article>
+
    </main>
+
     <footer>
         <p>&copy; 2024 - Todos os direitos reservados</p>
         <p>www.kidelicia.com.br</p>
