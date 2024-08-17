@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style_cadastro.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 </head>
-
+        
 <body> 
     <header class="cabecalho">
            <div class="icon">
@@ -18,21 +18,25 @@
     <main class="apresentacao">
         <h1 class="titulo">Cadastro</h1>
         <div class="itens">
-            <h3 class="h3">Nome completo:</h3>
-            <textarea class="entrada" id="nome_completo" placeholder="Nome completo"></textarea>
 
-            <h3 class="h3">Nome usuário:</h3>
-            <textarea class="entrada" id="nome_usuario" placeholder="Nome usuário"></textarea>
+            <form action="" method="POST">
+                <h3 class="h3">Nome completo:</h3>
+                <input type="text" class="entrada" id="nome_completo" name="nome_completo" placeholder="Nome completo" required>
 
-            <h3 class="h3">Email:</h3>
-            <textarea class="entrada" id="email" placeholder="Email"></textarea>
+                <h3 class="h3">Nome usuário:</h3>
+                <input type="text" class="entrada" id="nome_usuario" name="nome_usuario" placeholder="Nome usuário" required>
 
-            <h3 class="h3">Senha:</h3>
-            <textarea class="entrada" id="senha" placeholder="Senha"></textarea>
+                <h3 class="h3">Email:</h3>
+                <input type="email" class="entrada" id="email" name="email" placeholder="Email" required>
 
-            <p class="dica">Use pelo menos 8 caracteres, incluindo: números, símbolos, letras maiúsculas e minúsculas </p>
+                <h3 class="h3">Senha:</h3>
+                <textarea class="entrada" id="senha" placeholder="Senha"></textarea>
 
-            <button class="botao">Cadastrar</button>  
+                <p class="dica">Use pelo menos 8 caracteres, incluindo: números, símbolos, letras maiúsculas e minúsculas </p>
+
+                <button type="submit" class="botao">Cadastrar</button>
+            </form>
+        
         </div>
     </main>
     <footer>
