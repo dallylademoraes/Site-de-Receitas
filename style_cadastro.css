@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand&family=Inter:wght@100..900&display=swap');
+
+body{
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    /*background-color: #F6FFAE;*/
+    background-image: url(imagens/fundo_opaco.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 10px;
+}
+
+.cabecalho{
+    display: flex;
+    padding: 5px 0px 0px 50px;
+    color:black;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.icon{
+    font-size: 40px;
+}
+
+.h1{
+    font-size: 45px;
+    margin: 0px;
+}
+
+.titulo{
+    font-size: 30px;
+    margin: 0;
+    margin: 25px 0px 0px 0px;
+}
+.apresentacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 150px 50px 150px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 360px;
+    font-size: 10px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    margin: 0 auto;
+    padding: 5px 30px 5px 30px;
+}
+
+.h3{
+    font-size: 15px;
+    margin: 0;
+    padding: 10px 0px 5px 0px;
+}
+
+.dica{
+    font-size: 10px;
+    width: 300px;
+    margin: 0;
+}
+
+.botao{
+    align-items: center;
+    background-color: green;
+    font-size: 25px;
+    border-radius: 10px;
+    width: 280px;
+    height: 45px;
+    text-decoration: none;
+    margin: 25px 0px 25px 0px;
+    border: 0;
+    color: white;
+}
+
+.entrada{
+    padding: 5px;
+    border-radius: 10px;
+    width: 280px;
+    height: 20px;
+    color: black;
+    background-color: white;
+    justify-content: center;
+    font-size: 15px;
+}
