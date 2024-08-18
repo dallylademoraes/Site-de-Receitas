@@ -13,7 +13,6 @@ body{
 }
 
 .cabecalho{
-    position: absolute;
     display: flex;
     padding: 5px 0px 0px 50px;
     color:black;
@@ -35,7 +34,6 @@ body{
     margin: 25px 0px 0px 0px;
 }
 .apresentacao{
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,7 +45,7 @@ body{
     font-size: 10px;
     -webkit-box-flex: 1;
     flex-grow: 1;
-    margin: 0 auto;
+    margin: 40px 500px;
     padding: 5px 30px 5px 30px;
 }
 
