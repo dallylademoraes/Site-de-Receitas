@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiDelicia</title>
+    
     <link rel="stylesheet" href="style_cadastro.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
+    <form action="banco_cadastro.php" method="POST">
+
 </head>
         
 <body> 
