@@ -27,23 +27,23 @@
   </header>
   <nav>
     <ul class="menu">
-    <li><a href="?category=bolos%20e%20tortas">Bolos e Tortas</a></li>
+    <li><a href="?category=bolos e tortas">Bolos e Tortas</a></li>
     <li><a href="?category=carnes">Carnes</a></li>
     <li><a href="?category=aves">Aves</a></li>
-    <li><a href="?category=peixes%20e%20frutos%20do%20mar">Peixes e Frutos do Mar</a></li>
-    <li><a href="?category=saladas%20e%20molhos">Saladas e Molhos</a></li>
+    <li><a href="?category=peixes e frutos do mar">Peixes e Frutos do Mar</a></li>
+    <li><a href="?category=saladas e molhos">Saladas e Molhos</a></li>
     <li><a href="?category=sopas">Sopas</a></li>
     <li><a href="?category=massas">Massas</a></li>
     <li><a href="?category=bebidas">Bebidas</a></li>
-    <li><a href="?category=doces%20e%20sobremesas">Doces e Sobremesas</a></li>
-    <li><a href="?category=todas%20as%20receitas">Todas as Receitas</a></li>
+    <li><a href="?category=doces e sobremesas">Doces e Sobremesas</a></li>
+    <li><a href="?category=todas as receitas">Todas as Receitas</a></li>
     </ul>
   </nav>
   <div class="content">
    <?php  
 
     include("conexao.php");
-    
+
     $category = $_GET['category'] ?? '';
 
     if (empty($category)) {
