@@ -41,8 +41,8 @@
   </nav>
   <div class="content">
    <?php  
-    // url
-    $category = isset($_GET['category']) ? $_GET['category'] : '';
+
+    include("conexao.php");
 
     if (empty($category)) {
       echo '<section class="welcome show">';
@@ -114,6 +114,31 @@
       echo '<h2>Bem-vindo! Selecione uma categoria para começar.</h2>';
       echo '</section>';
     }
+      //teste com banco de dados
+      if(!empty($category)){
+        $sql = "SELECT nome, tempo, quantas_pessoas, descricao, ingredientes, preparo FROM receitas WHERE categoria = ?";
+
+        $stmt = $mysqli->prepare($sql); // preparando a consulta
+        $stmt->bind_param("s", $category);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        echo 'section class="show';
+        echo '<h2>' . ucfirst($category) . '<h2>';// nome da categoria
+        echo '<div> class="recipes-list">';
+
+        if($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            //informacoes da receita aqui
+          }
+        }else {
+          echo '<p>Nenhuma receita encontrada para esta categoria.</p>';
+        }
+        echo '<div>';
+        echo '</section>';
+      }
     ?>
   </div>
 </body>
