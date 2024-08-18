@@ -1,3 +1,17 @@
+<?php
+    include_once('banco_cadastro.php');
+
+    if(isset($_POST['submit'])) {
+        $nome_completo = $_POST['nome_completo'];
+        $nome_usuario = $_POST['nome_usuario'];
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+
+        $result = mysqli_query($mysqli, "INSERT INTO usuarios(nome_completo,nome_usuario,email,senha) VALUES ('$nome_completo','$nome_usuario','$email','$senha')");
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,11 +21,11 @@
     
     <link rel="stylesheet" href="style_cadastro.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
-    <form action="banco_cadastro.php" method="POST">
 
 </head>
         
 <body> 
+    <form action="cadastro.php" method="POST">
     <header class="cabecalho">
            <div class="icon">
                 <i class="fa-solid fa-utensils"></i>
@@ -22,7 +36,6 @@
         <h1 class="titulo">Cadastro</h1>
         <div class="itens">
 
-            <form action="" method="POST">
                 <h3 class="h3">Nome completo:</h3>
                 <input type="text" class="entrada" id="nome_completo" name="nome_completo" placeholder="Nome completo" required>
 
@@ -33,11 +46,11 @@
                 <input type="email" class="entrada" id="email" name="email" placeholder="Email" required>
 
                 <h3 class="h3">Senha:</h3>
-                <textarea class="entrada" id="senha" placeholder="Senha"></textarea>
+                <input type="senha" class="entrada" id="senha" name="senha" placeholder="Senha" required>
 
                 <p class="dica">Use pelo menos 8 caracteres, incluindo: números, símbolos, letras maiúsculas e minúsculas </p>
 
-                <button type="submit" class="botao">Cadastrar</button>
+                <input type="submit" name="submit" id="submit" class="botao">
             </form>
         
         </div>
