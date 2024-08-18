@@ -32,6 +32,8 @@
         </form>
         
         <?php
+
+    include_once('conexao.php');
         //verifica se o form foi submetido
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             //captura os dados enviados pelo form
