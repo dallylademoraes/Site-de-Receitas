@@ -26,34 +26,43 @@
             <input class="bordas" id="campo_senha" type="password" name="password" placeholder="Senha" required>
 
             <div class="botoes">
-                <button class="b1"type="submit">Fazer login</button>  
+                <button class="b1" type="submit">Fazer login</button>  
                 <a class="b2" href="cadastro.html">Cadastrar</a> 
             </div>   
         </form>
         
         <?php
+        include_once('conexao.php');
 
-    include_once('conexao.php');
-        //verifica se o form foi submetido
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            //captura os dados enviados pelo form
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            //senha e usuário para teste
-            $user_valido = "admin";
-            $senha_valida = "12345";
-
-            //verificação
-            if($username == $user_valido && $password == $senha_valida){
-                echo "<p>Logado!</p>"
+        if(isset($_POST['username']) || isset($_POST['password'])){
+            if(strlen($_POST['username']) == 0){
+                echo "Preencha seu nome de usuário";
+            }else if(strlen($_POST['password']) == 0){
+                echo "Preencha sua senha";
             }else{
-                echo "<p>Usuário ou senha incorreto!</p>";
+                $username = $mysqli->real_escape_string($_POST['username']);
+                $password = $mysqli->real_escape_string($_POST['password']);
+
+                $sql_code = "SELECT * FROM banco_usuarios WHERE username = '$username' AND password = '$password'";
+                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+                $quantidade = $sql_query->num_rows;
+
+                if($quantidade == 1){
+                    $usuario = $sql_query->fetch_assoc();
+
+                    session_start();
+
+                    $_SESSION['id'] = $usuario['id'];
+                    $_SESSION['nome'] = $usuario['nome'];
+
+                    header("Location: listagem.php");
+                }else {
+                    echo "Falha ao logar! Nome de usuário ou senha incorretos";
+                }
             }
         }
+        ?>
     </div>
-
-
 </body>
-
 </html>
