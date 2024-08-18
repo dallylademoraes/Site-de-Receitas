@@ -18,18 +18,66 @@
     </header>
 
     <div class="apresentacao">
-        <form class="caixa_fundo">
+        <form class="caixa_fundo" method="POST" action="">
             <h1 class="titulo">Login</h1>
             <h3 class="campos">Usuário:</h3>
-            <input class="bordas" id="campo_nome" type="text" placeholder="Nome usuário">
+            <input class="bordas" id="campo_nome" type="text" name="username" placeholder="Nome usuário" required>
             <h3 class="campos">Senha:</h3>
-            <input class="bordas" id="campo_senha" type="password" placeholder="Senha">
+            <input class="bordas" id="campo_senha" type="password" name="password" placeholder="Senha" required>
 
             <div class="botoes">
-                <button class="b1">Fazer login</button>  
+                <button class="b1" type="submit">Fazer login</button>  
                 <a class="b2" href="cadastro.html">Cadastrar</a>  
             </div>
         </form>
+
+        <?php
+        //dados de conexao com o bd
+        $servername = "localhost";
+        $username_db = "root";
+        $password_db = "";
+        $dbname = "kidelicia";
+
+        //cria conexao
+        $conn = new mysqli($servername, $username_db, $password_db, $dbname);
+
+        //verifica se a conexao foi bem-sucedida
+        if ($conn->connect_error){
+            die("Falha na conexão: " . $conn->connect_error);
+        }
+
+        //verifica se o form foi enviado
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            $username = $_POST['username'];
+            $password - $_POST['password'];
+
+            //consulta SQL para verificar o usuário e senha
+            $sql = "SELECT * FROM usuarios WHERE username = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            //verifica se o usuário existe
+            if ($result->num_rows > 0){
+                $row = $result->fetch_assoc();
+                //verifica se a senha está correta
+                if (password_verify($password, $row['passoword'])){
+                    echo "<p>Login bem-sucedido!</p>";
+                    //redireciona para outra página
+                } else {
+                    echo "<p>Senha incorreta!</p>";
+                }
+            } else{
+                echo "<p>Usuário não encontrado!</p>";
+            }
+            //fecha a declaração e a conexao
+            $stmt->close();
+        }
+
+        //fecha a conexao
+        $conn->close();
+
     </div>
 
 </body>
