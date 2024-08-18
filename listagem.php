@@ -132,6 +132,14 @@
         if($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
             //informacoes da receita aqui
+            echo '<div class="recipe">';
+            echo '<h3>' . htmlspecialchars($row['nome_receita']) . '</h3>';  // Nome da receita
+            echo '<p><strong>Tempo de Preparo:</strong> ' . htmlspecialchars($row['tempo_preparo']) . '</p>';  // Tempo de preparo
+            echo '<p><strong>Serve:</strong> ' . htmlspecialchars($row['porcoes']) . ' pessoas</p>';  // Número de porções
+            echo '<p><strong>Descrição:</strong> ' . htmlspecialchars($row['descricao']) . '</p>';  // Descrição
+            echo '<p><strong>Ingredientes:</strong> ' . htmlspecialchars($row['ingredientes']) . '</p>';  // Ingredientes
+            echo '<p><strong>Modo de Preparo:</strong> ' . htmlspecialchars($row['modo_preparo']) . '</p>';  // Modo de preparo
+            echo '</div>';
           }
         }else {
           echo '<p>Nenhuma receita encontrada para esta categoria.</p>';
