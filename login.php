@@ -26,14 +26,14 @@
             <input class="bordas" id="campo_senha" type="password" name="password" placeholder="Senha" required>
 
             <div class="botoes">
-                <button class="b1" type="submit">Fazer login</button>  
+                <button class="b1"type="submit">Fazer login</button>  
                 <a class="b2" href="cadastro.html">Cadastrar</a>  
             </div>
         </form>
-
+        
         <?php
         //dados de conexao com o bd
-        $servername = "localhost";
+        $servername = "localhost"
         $username_db = "root";
         $password_db = "";
         $dbname = "kidelicia";
@@ -49,28 +49,29 @@
         //verifica se o form foi enviado
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $username = $_POST['username'];
-            $password - $_POST['password'];
+            $password = $_POST['password'];
 
-            //consulta SQL para verificar o usuário e senha
+            //consulta sql p/ verificar o usuario e senha
             $sql = "SELECT * FROM usuarios WHERE username = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
+            $stmt->bind_param($sql);
+            $stmt->execute():
             $result = $stmt->get_result();
 
-            //verifica se o usuário existe
+            //verifica se o usuario existe
             if ($result->num_rows > 0){
                 $row = $result->fetch_assoc();
-                //verifica se a senha está correta
-                if (password_verify($password, $row['passoword'])){
+                //verifica se a senha esta correta
+                if (password_verify($password, $row['password'])){
                     echo "<p>Login bem-sucedido!</p>";
-                    //redireciona para outra página
-                } else {
+                    //redireciona para outra pag
+                } else{
                     echo "<p>Senha incorreta!</p>";
                 }
             } else{
                 echo "<p>Usuário não encontrado!</p>";
             }
+
             //fecha a declaração e a conexao
             $stmt->close();
         }
