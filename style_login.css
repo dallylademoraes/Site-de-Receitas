@@ -1,0 +1,103 @@
+body {
+    background-image: url(fundo_opaco.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+}
+
+.cabecalho {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0px 5px 0px;
+}
+
+.icon {
+    font-size: 40px;
+}
+
+.h1{
+    font-size: 45px;
+    margin: 0px;
+}
+
+.apresentacao {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0px 40px;
+    color: black;
+    font-size: 20px;
+    gap: 10px;
+    align-items: center;
+}
+
+.campos{
+    font-size: 15px;
+    margin: 0;
+    padding: 10px 0px 5px 0px;
+}
+.titulo{
+    margin: 0px;
+}
+.bordas {
+    padding: 5px;
+    border: 0.5px solid;
+    border-radius: 5px;
+    width: 50%;
+    color: black;
+    border-radius: 10px;
+    width: 280px;
+    height: 20px;
+}
+
+.caixa_fundo {
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Fundo branco com leve transparência */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    /* Limitar a largura máxima */
+    margin: auto;
+    /* Centralizar */
+    z-index: 1;
+    /* Certifique-se de que esteja acima do fundo */
+}
+
+.botoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.b1{
+    text-align: center;
+    border-radius: 10px;
+    border: 0;
+    width: 500px;
+    padding: 10px;
+    text-decoration: none;
+    margin: 20px  5px 0px;
+    font-size: 15px;
+
+    color: white;
+    background-color: green;
+}
+
+.b2{
+    text-align: center;
+    border-radius: 10px;
+    border: 0;
+    width: 500px;
+    padding: 10px;
+    text-decoration: none;
+    margin: 20px 5px 0px;
+    font-size: 15px;
+
+    color: white;
+    background-color: green;
+
+}
