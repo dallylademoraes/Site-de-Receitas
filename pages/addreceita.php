@@ -2,7 +2,6 @@
 include_once('../mysql/connection.php');
 
 if (isset($_POST['submit'])) {
-    // Receber os dados do formulário
     $recipe_name = $_POST['recipe-name'];
     $recipe_serve = $_POST['recipe-serve'];
     $recipe_author = 'Luís Gustavo';
@@ -16,53 +15,52 @@ if (isset($_POST['submit'])) {
         $recipe_time = $_POST['recipe-hour'] . ' horas e ' . $_POST['recipe-minute'] . ' minutos';
     }
 
-    // Remove <br> e outras tags HTML indesejadas antes de salvar
     $ingredients = isset($_POST['ingredients']) ? strip_tags($_POST['ingredients']) : '';
     $preparation = isset($_POST['preparation']) ? strip_tags($_POST['preparation']) : '';
     $categoria = $_POST['recipe-categorias'];
 
-    // Manipulação do upload da imagem
     $image_name = '';
     if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] == 0) {
         $image_tmp_name = $_FILES['recipe_image']['tmp_name'];
         $image_name = basename($_FILES['recipe_image']['name']);
-        $target_dir = "uploads/";
+        $target_dir = "../images/";
         $target_file = $target_dir . $image_name;
 
-        // Mover o arquivo para o diretório de uploads
         if (move_uploaded_file($image_tmp_name, $target_file)) {
-            // Imagem carregada com sucesso
+            $sql_img = "INSERT INTO img (path) VALUES (?)";
+            if ($stmt_img = $conn->prepare($sql_img)) {
+                $stmt_img->bind_param('s', $target_file);
+                $stmt_img->execute();
+                $stmt_img->close();
+            } else {
+                echo "Erro ao salvar o caminho da imagem: " . $conn->error;
+                exit();
+            }
         } else {
             echo "Erro ao fazer o upload da imagem.";
             exit();
         }
     }
 
-    // Inserir os dados no banco de dados
     $sql = "INSERT INTO receitas (nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo, categoria) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Preparar a declaração
-    if (!empty($conn)) {
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param('ssssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation, $categoria);
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param('ssssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation, $categoria);
 
-            if ($stmt->execute()) {
-                echo "Receita adicionada com sucesso!";
-                header("Location: ".$_SERVER['PHP_SELF']);
-                exit();
-            } else {
-                echo "Erro ao adicionar receita: " . $stmt->error;
-            }
-
-            // Fechar a declaração
-            $stmt->close();
+        if ($stmt->execute()) {
+            echo "Receita adicionada com sucesso!";
+            header("Location: ".$_SERVER['PHP_SELF']);
+            exit();
         } else {
-            echo "Erro na preparação da consulta: " . $conn->error;
+            echo "Erro ao adicionar receita: " . $stmt->error;
         }
+
+        $stmt->close();
+    } else {
+        echo "Erro na preparação da consulta: " . $conn->error;
     }
 
-    // Fechar a conexão
     $conn->close();
 }
 ?>
