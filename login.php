@@ -1,3 +1,43 @@
+<?php
+        include_once('login.php');
+        $servidor = "localhost"; 
+        $banco = "banco_usuarios"; 
+        $usuario = "root";
+        $senha = ""; 
+        
+        $mysqli = new mysqli($servidor, $usuario, $senha, $banco);
+
+        if(isset($_POST['submit'])){
+            if(strlen($_POST['username']) == 0){
+                echo "Preencha seu nome de usuário";
+            }else if(strlen($_POST['password']) == 0){
+                echo "Preencha sua senha";
+            }else{
+                $username = $mysqli->real_escape_string($_POST['username']);
+                $password = $mysqli->real_escape_string($_POST['password']);
+
+                $sql_code = "SELECT * FROM usuarios WHERE nome_usuario = '$username' AND senha = '$password'";
+                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+
+                $quantidade = $sql_query->num_rows;
+
+                if($quantidade == 1){
+                    $usuario = $sql_query->fetch_assoc();
+
+                    session_start();
+
+                    $_SESSION['id'] = $usuario['id'];
+                    $_SESSION['nome'] = $usuario['nome'];
+
+                    header("Location: listagem.php");
+                }else {
+                    echo "Falha ao logar! Nome de usuário ou senha incorretos";
+                }
+            }
+        }
+        ?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,43 +66,10 @@
             <input class="bordas" id="campo_senha" type="password" name="password" placeholder="Senha" required>
 
             <div class="botoes">
-                <button class="b1" type="submit">Fazer login</button>  
+                <input type="submit" name="submit" class="b1" >  
                 <a class="b2" href="cadastro.html">Cadastrar</a> 
             </div>   
         </form>
-        
-        <?php
-        include_once('conexao.php');
-
-        if(isset($_POST['username']) || isset($_POST['password'])){
-            if(strlen($_POST['username']) == 0){
-                echo "Preencha seu nome de usuário";
-            }else if(strlen($_POST['password']) == 0){
-                echo "Preencha sua senha";
-            }else{
-                $username = $mysqli->real_escape_string($_POST['username']);
-                $password = $mysqli->real_escape_string($_POST['password']);
-
-                $sql_code = "SELECT * FROM banco_usuarios WHERE username = '$username' AND password = '$password'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-
-                $quantidade = $sql_query->num_rows;
-
-                if($quantidade == 1){
-                    $usuario = $sql_query->fetch_assoc();
-
-                    session_start();
-
-                    $_SESSION['id'] = $usuario['id'];
-                    $_SESSION['nome'] = $usuario['nome'];
-
-                    header("Location: listagem.php");
-                }else {
-                    echo "Falha ao logar! Nome de usuário ou senha incorretos";
-                }
-            }
-        }
-        ?>
-    </div>
+            </div>
 </body>
 </html>

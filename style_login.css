@@ -1,5 +1,5 @@
 body {
-    background-image: url(fundo_opaco.png);
+    background-image: url(fundo_opaco[1].png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -19,7 +19,7 @@ body {
     font-size: 40px;
 }
 
-.h1{
+.h1 {
     font-size: 45px;
     margin: 0px;
 }
@@ -34,14 +34,16 @@ body {
     align-items: center;
 }
 
-.campos{
+.campos {
     font-size: 15px;
     margin: 0;
     padding: 10px 0px 5px 0px;
 }
-.titulo{
+
+.titulo {
     margin: 0px;
 }
+
 .bordas {
     padding: 5px;
     border: 0.5px solid;
@@ -67,27 +69,27 @@ body {
     /* Certifique-se de que esteja acima do fundo */
 }
 
-.botoes{
+.botoes {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.b1{
+.b1 {
     text-align: center;
     border-radius: 10px;
     border: 0;
     width: 500px;
     padding: 10px;
     text-decoration: none;
-    margin: 20px  5px 0px;
+    margin: 20px 5px 0px;
     font-size: 15px;
 
     color: white;
     background-color: green;
 }
 
-.b2{
+.b2 {
     text-align: center;
     border-radius: 10px;
     border: 0;
