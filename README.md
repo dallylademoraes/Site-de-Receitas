@@ -30,4 +30,4 @@ else
 Mais uma coisa, o banco de dados sofreu uma atualização na tabela "receitas". <br>
 ![image](https://github.com/user-attachments/assets/f92e28a4-32c6-426a-a2bf-c6240deddaf9)
 
-[Dallyla] - Não esquece de atualizar no seu.
+[Dallyla] - Não esquece de baixar a nova versão do modelo. 
