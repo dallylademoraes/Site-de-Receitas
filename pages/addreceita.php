@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     $recipe_name = $_POST['recipe-name'];
     $recipe_serve = $_POST['recipe-serve'];
     $recipe_author = 'Luís Gustavo';
-    $recipe_description = isset($_POST['recipe-desc']) ? nl2br(htmlspecialchars($_POST['recipe-desc'])) : '';
+    $recipe_description = isset($_POST['recipe-desc']) ? strip_tags($_POST['recipe-desc']) : '';
 
     if ($_POST['recipe-hour'] == 0) {
         $recipe_time = $_POST['recipe-minute'] . ' minutos';
@@ -16,9 +16,27 @@ if (isset($_POST['submit'])) {
         $recipe_time = $_POST['recipe-hour'] . ' horas e ' . $_POST['recipe-minute'] . ' minutos';
     }
 
-    $ingredients = isset($_POST['ingredients']) ? nl2br(htmlspecialchars($_POST['ingredients'])) : '';
-    $preparation = isset($_POST['preparation']) ? nl2br(htmlspecialchars($_POST['preparation'])) : '';
+    // Remove <br> e outras tags HTML indesejadas antes de salvar
+    $ingredients = isset($_POST['ingredients']) ? strip_tags($_POST['ingredients']) : '';
+    $preparation = isset($_POST['preparation']) ? strip_tags($_POST['preparation']) : '';
     $categoria = $_POST['recipe-categorias'];
+
+    // Manipulação do upload da imagem
+    $image_name = '';
+    if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] == 0) {
+        $image_tmp_name = $_FILES['recipe_image']['tmp_name'];
+        $image_name = basename($_FILES['recipe_image']['name']);
+        $target_dir = "uploads/";
+        $target_file = $target_dir . $image_name;
+
+        // Mover o arquivo para o diretório de uploads
+        if (move_uploaded_file($image_tmp_name, $target_file)) {
+            // Imagem carregada com sucesso
+        } else {
+            echo "Erro ao fazer o upload da imagem.";
+            exit();
+        }
+    }
 
     // Inserir os dados no banco de dados
     $sql = "INSERT INTO receitas (nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo, categoria) 
@@ -49,6 +67,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -73,9 +92,9 @@ if (isset($_POST['submit'])) {
     </div>
 </header>
 
-<form method="post" action="addreceita.php">
+<form method="post" action="addreceita.php" enctype="multipart/form-data">
     <main>
-            <div class="left">
+        <div class="left">
             <article>
                 <div class="info">
                     <h1>ADICIONAR NOVA RECEITA</h1>
@@ -84,12 +103,12 @@ if (isset($_POST['submit'])) {
                 <div class="about column form-child">
                     <div class="input-group">
                         <label class="label">Nome da Receita</label>
-                        <input class="input-custom" autocomplete="off" name="recipe-name" id="recipe-name" type="text">
+                        <input class="input-custom" autocomplete="off" name="recipe-name" id="recipe-name" type="text" required>
                     </div>
 
                     <div class="input-group">
                         <label class="label">Serve quantas pessoas</label>
-                        <input class="input-custom" autocomplete="off" name="recipe-serve" id="recipe-name" type="number">
+                        <input class="input-custom" autocomplete="off" name="recipe-serve" id="recipe-serve" type="number" required>
                     </div>
                     <div class="input-group">
                         <label class="label">Descrição da Receita</label>
@@ -99,7 +118,7 @@ if (isset($_POST['submit'])) {
                 <label class="label">Tempo de Preparo</label>
                 <div class="recipe-time column form-child">
                     <input name="recipe-hour" class="input-custom" type="number" placeholder="Horas" min="0" step="1">
-                    <input name="recipe-minute" class="input-custom" type="number" placeholder="Minutos" min="0" max="59" step="1" >
+                    <input name="recipe-minute" class="input-custom" type="number" placeholder="Minutos" min="0" max="59" step="1">
                 </div>
                 <div class="categoria">
                     <label class="label">Categoria da Receita</label>
@@ -118,25 +137,23 @@ if (isset($_POST['submit'])) {
 
                 <div class="ingredients column form-child">
                     <label class="label">Ingredientes</label>
-                    <textarea id="ingredients" name="ingredients" rows="4" cols="50" ></textarea>
+                    <textarea id="ingredients" name="ingredients" rows="4" cols="50"></textarea>
                 </div>
 
                 <div class="wayofpreparation column form-child">
                     <label class="label">Modo de Preparo</label>
-                    <textarea id="preparation" name="preparation" rows="6" cols="50" ></textarea>
+                    <textarea id="preparation" name="preparation" rows="6" cols="50"></textarea>
                 </div>
             </article>
         </div>
         <div class="right">
             <div class="upload column form-child">
                 <h3>Capa da Receita</h3>
-                <form action="addreceita.php" method="post" enctype="multipart/form-data" id="uploadForm">
-                    <input type="file" name="recipe_image" accept="image/*" onchange="previewImage(this)">
-                    <div class="img-banner" id="imgBanner">
-                        <p>Carregue uma imagem</p>
-                    </div>
-                    <button class="button2" type="submit" name="submit">Enviar Receita</button>
-                </form>
+                <input type="file" name="recipe_image" accept="image/*" onchange="previewImage(this)">
+                <div class="img-banner" id="imgBanner">
+                    <p>Carregue uma imagem</p>
+                </div>
+                <button class="button2" type="submit" name="submit">Enviar Receita</button>
             </div>
         </div>
     </main>
