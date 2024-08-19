@@ -234,3 +234,13 @@ hr {
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
+.categoria select {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.categoria {
+    margin-bottom: 20px;
+}
+

@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
 
 <form method="post" action="index.php">
     <main>
-        <div class="left">
+            <div class="left">
             <article>
                 <div class="info">
                     <h1>ADICIONAR NOVA RECEITA</h1>
@@ -99,6 +99,21 @@ if (isset($_POST['submit'])) {
                     <input name="recipe-hour" class="input-custom" type="number" placeholder="Horas" min="0" step="1">
                     <input name="recipe-minute" class="input-custom" type="number" placeholder="Minutos" min="0" max="59" step="1" >
                 </div>
+                <div class="categoria">
+                    <label class="label">Categoria da Receita</label>
+                    <select id="opcoes" name="Categorias">
+                        <option value="option1">Carnes</option>
+                        <option value="option2">Aves</option>
+                        <option value="option3">Peixes e Frutos do Mar</option>
+                        <option value="option4">Saladas</option>
+                        <option value="option5">Sopas</option>
+                        <option value="option6">Massas e Molhos</option>
+                        <option value="option7">Bebidas</option>
+                        <option value="option8">Doces e Sobremesas</option>
+                        <option value="option9">Bolos e Tortas</option>
+                    </select>
+                </div>
+
                 <div class="ingredients column form-child">
                     <label class="label">Ingredientes</label>
                     <textarea id="ingredients" name="ingredients" rows="4" cols="50" ></textarea>
