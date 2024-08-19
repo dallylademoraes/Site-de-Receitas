@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de login</title>
-    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="css/style_login.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 </head>
 

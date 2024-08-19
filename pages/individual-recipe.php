@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/bd4fd62cff.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="individual-recipe.css">
+    <link rel="stylesheet" href="css/individual-recipe.css">
     <title>KiDelicia</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
             <button class="btn-pesquisar">Pesquisar</button>
         </div>
         <div>
-            <img class="people-img" style="margin-right: 40px;" src="../imagens/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+            <img class="people-img" style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
         </div>
     </header>
 <nav>
@@ -59,7 +59,7 @@
                    O bolo de cenoura é uma clássica sobremesa que combina a suavidade da cenoura com uma textura macia e fofinha. Seu sabor levemente adocicado é perfeitamente equilibrado pela cobertura de chocolate, que adiciona uma camada rica e cremosa ao topo do bolo. Além de ser uma receita simples e rápida de preparar, o bolo de cenoura é um sucesso garantido em qualquer ocasião, trazendo um toque de conforto e nostalgia a cada fatia. Ideal para acompanhar um café da tarde ou para adoçar o dia com um sabor caseiro e acolhedor.
                </p>
            </div>
-           <img class="recipe-image" src="../imagens/bolo.png" alt="">
+           <img class="recipe-image" src="../src/bolo.png" alt="">
        </article>
 
        <article>
@@ -94,13 +94,13 @@
            <h3 class="txt">Descobrir mais receitas</h3>
            <div class="discover-recipe">
                <div class="recipe-item">
-                   <img src="../imagens/recipe-item/img.png" alt="" width="300px">
+                   <img src="../src/recipe-item/img.png" alt="" width="300px">
                    <div class="bar">
                         <p><a>BOLO DE LARANJA</a></p>
                    </div>
                </div>
                <div class="recipe-item">
-                   <img src="../imagens/recipe-item/img.png" alt="" width="300px">
+                   <img src="../src/recipe-item/img.png" alt="" width="300px">
                    <div class="bar">
                        <p><a>BOLO DE LARANJA</a></p>
                    </div>
