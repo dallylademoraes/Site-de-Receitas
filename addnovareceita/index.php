@@ -29,12 +29,11 @@ if (isset($_POST['submit'])) {
         // Vincular os parâmetros
         $stmt->bind_param('sssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation);
 
-        // Executar a declaração
-        if ($stmt->execute()) {
-            echo "Receita adicionada com sucesso!";
-        } else {
-            echo "Erro ao adicionar receita: " . $stmt->error;
-        }
+//        if ($stmt->execute()) {
+//            echo "Receita adicionada com sucesso!";
+//        } else {
+//            echo "Erro ao adicionar receita: " . $stmt->error;
+//        }
 
         $stmt->close();
     } else {
