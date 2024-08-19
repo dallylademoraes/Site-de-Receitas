@@ -78,15 +78,21 @@ main {
 /*Img-banner*/
 .img-banner {
     width: 100%;
-    height: 300px;
-    background-color: rgba(232, 232, 232, 0.4);
-    margin-top: 30px;
-    border-radius: 15px;
-    text-align: center;
+    height: 300px; /* Defina o tamanho desejado para a div */
+    border: 1px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.img-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha a div */
 }
 
 /* Estilos Adicionais */

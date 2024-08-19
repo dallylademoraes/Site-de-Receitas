@@ -1,9 +1,8 @@
 <?php
-
 include_once('../mysql/connection.php');
 
 if (isset($_POST['submit'])) {
-
+    // Receber os dados do formulário
     $recipe_name = $_POST['recipe-name'];
     $recipe_serve = $_POST['recipe-serve'];
     $recipe_author = 'Luís Gustavo';
@@ -19,25 +18,30 @@ if (isset($_POST['submit'])) {
 
     $ingredients = isset($_POST['ingredients']) ? nl2br(htmlspecialchars($_POST['ingredients'])) : '';
     $preparation = isset($_POST['preparation']) ? nl2br(htmlspecialchars($_POST['preparation'])) : '';
+    $categoria = $_POST['recipe-categorias'];
 
-
-    $sql = "INSERT INTO receitas (nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    // Inserir os dados no banco de dados
+    $sql = "INSERT INTO receitas (nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo, categoria) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Preparar a declaração
-    if ($stmt = $conn->prepare($sql)) {
-        // Vincular os parâmetros
-        $stmt->bind_param('sssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation);
+    if (!empty($conn)) {
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param('ssssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation, $categoria);
 
-//        if ($stmt->execute()) {
-//            echo "Receita adicionada com sucesso!";
-//        } else {
-//            echo "Erro ao adicionar receita: " . $stmt->error;
-//        }
+            if ($stmt->execute()) {
+                echo "Receita adicionada com sucesso!";
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit();
+            } else {
+                echo "Erro ao adicionar receita: " . $stmt->error;
+            }
 
-        $stmt->close();
-    } else {
-        echo "Erro na preparação da consulta: " . $conn->error;
+            // Fechar a declaração
+            $stmt->close();
+        } else {
+            echo "Erro na preparação da consulta: " . $conn->error;
+        }
     }
 
     // Fechar a conexão
@@ -45,16 +49,14 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Receita</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="css/addreceita.css">
+    <script src="js/script.js"></script>
 </head>
 <body>
 <header>
@@ -71,13 +73,13 @@ if (isset($_POST['submit'])) {
     </div>
 </header>
 
-<form method="post" action="index.php">
+<form method="post" action="addreceita.php">
     <main>
             <div class="left">
             <article>
                 <div class="info">
                     <h1>ADICIONAR NOVA RECEITA</h1>
-                    <hr style="border: 1px solid #000; width: 80%; margin: 15px 0px;">
+                    <hr style="border: 1px solid #000; width: 80%; margin: 15px;">
                 </div>
                 <div class="about column form-child">
                     <div class="input-group">
@@ -101,16 +103,16 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="categoria">
                     <label class="label">Categoria da Receita</label>
-                    <select id="opcoes" name="Categorias">
-                        <option value="option1">Carnes</option>
-                        <option value="option2">Aves</option>
-                        <option value="option3">Peixes e Frutos do Mar</option>
-                        <option value="option4">Saladas</option>
-                        <option value="option5">Sopas</option>
-                        <option value="option6">Massas e Molhos</option>
-                        <option value="option7">Bebidas</option>
-                        <option value="option8">Doces e Sobremesas</option>
-                        <option value="option9">Bolos e Tortas</option>
+                    <select id="opcoes" name="recipe-categorias">
+                        <option value="carnes">Carnes</option>
+                        <option value="aves">Aves</option>
+                        <option value="peixes_frutosdomar">Peixes e Frutos do Mar</option>
+                        <option value="saladas">Saladas</option>
+                        <option value="sopas">Sopas</option>
+                        <option value="massas_molhos">Massas e Molhos</option>
+                        <option value="bebidas">Bebidas</option>
+                        <option value="doces_sobremesas">Doces e Sobremesas</option>
+                        <option value="bolos_tortas">Bolos e Tortas</option>
                     </select>
                 </div>
 
@@ -126,17 +128,16 @@ if (isset($_POST['submit'])) {
             </article>
         </div>
         <div class="right">
-            <form action="">
-                <div class="upload column form-child">
-                    <h3>Capa da Receita</h3>
-                    <input type="file" accept="image/*" >
-                    <div class="img-banner">
+            <div class="upload column form-child">
+                <h3>Capa da Receita</h3>
+                <form action="addreceita.php" method="post" enctype="multipart/form-data" id="uploadForm">
+                    <input type="file" name="recipe_image" accept="image/*" onchange="previewImage(this)">
+                    <div class="img-banner" id="imgBanner">
                         <p>Carregue uma imagem</p>
                     </div>
-                </div>
-
-                <button class="button2" type="submit" name="submit">Enviar Receita</button>
-            </form>
+                    <button class="button2" type="submit" name="submit">Enviar Receita</button>
+                </form>
+            </div>
         </div>
     </main>
 </form>
