@@ -1,15 +1,15 @@
 <?php
-$servidor = "localhost"; 
-$banco = "kidelicia"; 
+$servidor = "localhost";
+$banco = "kidelicia";
 $usuario = "root";
-$senha = ""; 
+$senha = "";
 
-$mysqli = new mysqli($servidor, $usuario, $senha, $banco);
+$conn = new mysqli($servidor, $usuario, $senha, $banco);
 
-if ($mysqli->connect_errno) {
- echo "Conexão falhou: (" . $conn->connect_errno .")" . $conn->connect_errno;
+if ($conn->connect_errno) {
+    echo "Conexão falhou: (" . $conn->connect_errno .")" . $conn->connect_errno;
 }
 else
-   echo "Conectado";
+    echo "Conectado";
 
 ?>
