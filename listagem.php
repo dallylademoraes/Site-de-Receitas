@@ -54,9 +54,9 @@
     } 
       //teste com banco de dados
       if(!empty($category)){
-        $sql = "SELECT nome, tempo, quantas_pessoas, descricao, ingredientes, preparo FROM receitas WHERE categoria = ?";
+        $sql = "SELECT nome_receita, tempo_preparo, qtd_pessoas, descricao, ingredientes, preparo, imagem FROM receitas WHERE categoria = ?";
 
-        $stmt = $mysqli->prepare($sql); // preparando a consulta
+        $stmt = $conn->prepare($sql); // preparando a consulta
         $stmt->bind_param("s", $category);
 
         $stmt->execute();
@@ -66,14 +66,18 @@
         echo '<section class="show">';
         echo '<h2>' . ucfirst($category) . '</h2>'; // nome da categoria
         echo '<div class="recipes-list">';
-
+    
         if($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
             //informacoes da receita aqui
             echo '<div class="recipe">';
-            echo '<h3>' . htmlspecialchars($row['nome']) . '</h3>'; 
-            echo '<p><strong>Tempo de Preparo:</strong> ' . htmlspecialchars($row['tempo']) . '</p>';  
-            echo '<p><strong>Serve:</strong> ' . htmlspecialchars($row['quantas_pessoas']) . ' pessoas</p>'; 
+            // Exibição da imagem 
+            if (!empty($row['imagem'])) {
+              echo '<img src="' . htmlspecialchars($row['imagem']) . '" alt="Imagem de comida' . htmlspecialchars($row['nome_receita']) . '">';
+            }
+            echo '<h3>' . htmlspecialchars($row['nome_receita']) . '</h3>'; 
+            echo '<p><strong>Tempo de Preparo:</strong> ' . htmlspecialchars($row['tempo_preparo']) . '</p>';  
+            echo '<p><strong>Serve:</strong> ' . htmlspecialchars($row['qtd_pessoas']) . ' pessoas</p>'; 
             echo '<p><strong>Descrição:</strong> ' . htmlspecialchars($row['descricao']) . '</p>';
             echo '<p><strong>Ingredientes:</strong> ' . htmlspecialchars($row['ingredientes']) . '</p>';
             echo '<p><strong>Modo de Preparo:</strong> ' . htmlspecialchars($row['preparo']) . '</p>';  
