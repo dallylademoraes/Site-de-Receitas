@@ -1,6 +1,6 @@
 <?php
-include_once('../mysql/connection.php');
-
+//include_once('../mysql/connection.php');
+include_once('connection.php');
 if (isset($_POST['submit'])) {
     $recipe_name = $_POST['recipe-name'];
     $recipe_serve = $_POST['recipe-serve'];
@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] == 0) {
         $image_tmp_name = $_FILES['recipe_image']['tmp_name'];
         $image_name = basename($_FILES['recipe_image']['name']);
-        $target_dir = "../images/";
+        $target_dir = "images/";
         $target_file = $target_dir . $image_name;
 
         if (move_uploaded_file($image_tmp_name, $target_file)) {
@@ -72,21 +72,22 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Receita</title>
-    <link rel="stylesheet" href="css/addreceita.css">
+    <!--<link rel="stylesheet" href="css/addreceita.css">-->
+    <link rel="stylesheet" href="addreceita.css">
     <script src="js/script.js"></script>
 </head>
 <body>
 <header>
     <div class="banner">
-        <button type="button" class="button">
-            <div class="indicator">
-                <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#000000" d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
-                    <path fill="#000000" d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
-                </svg>
-            </div>
-            <span>Voltar</span>
-        </button>
+    <a href="listagem.php" class="button">
+    <div class="indicator">
+        <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#000000" d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
+            <path fill="#000000" d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
+        </svg>
+    </div>
+    <span>Voltar</span>
+    </a>
     </div>
 </header>
 
