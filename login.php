@@ -31,7 +31,8 @@
 
                     header("Location: listagem.php");
                 }else {
-                    echo "Falha ao logar! Nome de usuário ou senha incorretos";
+                    echo "<script>alert('Falha ao logar! Nome de usuário ou senha incorretos');</script>";
+                    //echo "Falha ao logar! Nome de usuário ou senha incorretos";
                 }
             }
         }
