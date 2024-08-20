@@ -73,8 +73,8 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adicionar Receita</title>
     <!--<link rel="stylesheet" href="css/addreceita.css">-->
-    <link rel="stylesheet" href="addreceita.css">
-    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="../css/addreceita.css">
+    <script src="../js/script.js"></script>
 </head>
 <body>
 <header>

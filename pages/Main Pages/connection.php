@@ -1,5 +1,6 @@
 <?php
 $servidor = "localhost";
+// Helo e Neci -> $banco = "banco_usuarios";
 $banco = "kidelicia";
 $usuario = "root";
 $senha = "";
@@ -11,5 +12,4 @@ if ($conn->connect_errno) {
 }
 else
 //    echo "Conectado";
-
 ?>

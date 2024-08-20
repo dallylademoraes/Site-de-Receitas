@@ -1,5 +1,4 @@
 <?php
-//include_once('../mysql/connection.php');
 include_once('connection.php');
 
 // Obtenha o ID da receita da URL
@@ -8,7 +7,7 @@ if (isset($_GET['id'])) {
 } else {
     // Defina a URL de redirecionamento
     $redirect_url = "http://localhost/Site-de-Receitas2/pagina-principal/listagem.php";
-    
+
     // Redirecione para a página de listagem
     header("Location: $redirect_url");
     exit();
@@ -33,8 +32,7 @@ $stmt->fetch();
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/bd4fd62cff.js" crossorigin="anonymous"></script>
-    <!--<link rel="stylesheet" href="css/individual-recipe.css">-->
-    <link rel="stylesheet" href="individual-recipe.css">
+    <link rel="stylesheet" href="../css/individual-recipe.css">
     <title><?php echo htmlspecialchars($nome_receita); ?> - KiDelicia</title>
 </head>
 <body>
@@ -54,23 +52,25 @@ $stmt->fetch();
         </form>
     </div>
     <div>
-        <img class="people-img" style="margin-right: 40px;" src="imagens/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img class="people-img" style="margin-right: 40px;" src="../src/icon-acc.svg" alt="Account">
     </div>
 </header>
+
 <nav>
     <ul class="menu">
-        <li><a href="?category=bolos_e_tortas">Bolos e Tortas</a></li>
-        <li><a href="?category=carnes">Carnes</a></li>
-        <li><a href="?category=aves">Aves</a></li>
-        <li><a href="?category=peixes_e_frutos_do_mar">Peixes e Frutos do Mar</a></li>
-        <li><a href="?category=saladas">Saladas</a></li>
-        <li><a href="?category=sopas">Sopas</a></li>
-        <li><a href="?category=massas_e_molhos">Massas e Molhos</a></li>
-        <li><a href="?category=bebidas">Bebidas</a></li>
-        <li><a href="?category=doces_e_sobremesas">Doces e Sobremesas</a></li>
-        <li><a href="?category=todas_as_receitas">Todas as Receitas</a></li>
+        <li><a href="listagem.php?category=bolos_tortas">Bolos e Tortas</a></li>
+        <li><a href="listagem.php?category=carnes">Carnes</a></li>
+        <li><a href="listagem.php?category=aves">Aves</a></li>
+        <li><a href="listagem.php?category=peixes_frutosdomar">Peixes e Frutos do Mar</a></li>
+        <li><a href="listagem.php?category=saladas">Saladas</a></li>
+        <li><a href="listagem.php?category=sopas">Sopas</a></li>
+        <li><a href="listagem.php?category=massas_molhos">Massas e Molhos</a></li>
+        <li><a href="listagem.php?category=bebidas">Bebidas</a></li>
+        <li><a href="listagem.php?category=doces_sobremesas">Doces e Sobremesas</a></li>
+        <li><a href="listagem.php?category=todas_as_receitas">Todas as Receitas</a></li>
     </ul>
 </nav>
+
 <main>
     <article class="recipe">
         <div class="recipe-info">

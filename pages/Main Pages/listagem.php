@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiDelicia</title>
-    <link rel="stylesheet" href="style.css"> <!--href="css/style.css"-->
+    <link rel="stylesheet" href="../css/style.css"> <!--href="css/style.css"-->
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -25,7 +25,7 @@
     </div>
     <div>
         <!--<img style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">-->
-        <img style="margin-right: 40px;" src="imagens/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img style="margin-right: 40px;" src="../src/icon-acc.svg" alt="Account">
     </div>
     <div class="adicionar-receita">
         <a href="addreceita.php" class="btn-receita">Adicionar Receita</a>
@@ -47,7 +47,7 @@
 </nav>
 <div class="content">
     <?php
-    include_once('connection.php'); //include_once('../mysql/connection.php');
+    include_once('connection.php');
 
     // Mapeamento de categorias para nomes amigáveis
     $category_names = array(

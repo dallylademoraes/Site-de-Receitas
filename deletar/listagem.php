@@ -22,7 +22,7 @@
         <button class="btn-pesquisar">Pesquisar</button>
     </div>
     <div>
-        <img style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img style="margin-right: 40px;" src="src/icon-acc.svg" alt="Account">
     </div>
 </header>
 <nav>

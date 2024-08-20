@@ -4,7 +4,7 @@ body{
     font-family: "Inter", sans-serif;
     font-style: normal;
     /*background-color: #F6FFAE;*/
-    background-image: url(fundo_opaco.png);
+    background-image: url(../src/fundo_opaco.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

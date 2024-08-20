@@ -36,7 +36,7 @@ $stmt->fetch();
         <button class="btn-pesquisar">Pesquisar</button>
     </div>
     <div>
-        <img class="people-img" style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img class="people-img" style="margin-right: 40px;" src="src/icon-acc.svg" alt="Account">
     </div>
 </header>
 <nav>
@@ -72,7 +72,7 @@ $stmt->fetch();
                 <?php echo htmlspecialchars($descricao); ?>
             </p>
         </div>
-        <img class="recipe-image" src="../src/bolo.png" alt="">
+        <img class="recipe-image" src="src/bolo.png" alt="">
     </article>
 
     <article>
@@ -106,13 +106,13 @@ $stmt->fetch();
         <h3 class="txt">Descobrir mais receitas</h3>
         <div class="discover-recipe">
             <div class="recipe-item">
-                <img src="../src/recipe-item/img.png" alt="" width="300px">
+                <img src="src/recipe-item/img.png" alt="" width="300px">
                 <div class="bar">
                     <p><a>BOLO DE LARANJA</a></p>
                 </div>
             </div>
             <div class="recipe-item">
-                <img src="../src/recipe-item/img.png" alt="" width="300px">
+                <img src="src/recipe-item/img.png" alt="" width="300px">
                 <div class="bar">
                     <p><a>BOLO DE LARANJA</a></p>
                 </div>

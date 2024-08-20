@@ -1,5 +1,5 @@
 <?php
-    include_once('conexao.php');
+    include_once('connection.php');
 
     if(isset($_POST['submit'])) {
         $nome_completo = $_POST['nome_completo'];
@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiDelicia</title>
     
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 
 </head>

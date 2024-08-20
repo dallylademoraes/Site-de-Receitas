@@ -1,5 +1,5 @@
 <?php
-        include_once('conexao.php');
+        include_once('connection.php');
 
         if(isset($_POST['submit'])){
             if(strlen($_POST['username']) == 0){
@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de login</title>
-    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 </head>
 
@@ -62,7 +62,7 @@
 
             <div class="botoes">
                 <input type="submit" name="submit" class="b1" >  
-                <a class="b2" href="cadastro.php">Cadastrar</a> 
+                <a class="b2" href="cadastro.php">Cadastrar</a>
             </div>   
         </form>
             </div>
