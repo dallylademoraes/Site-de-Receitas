@@ -5,7 +5,6 @@
 :root {
     --cor-primaria: #149c00;
     --secundaria: #4bbc1e;
-
 }
 
 * {
@@ -26,28 +25,41 @@ header {
 .search-bar {
     flex: 1;
     display: flex;
-    justify-content: center;
+    align-items: center; /* Alinha verticalmente o input e o botão */
+    justify-content: center; /* Centraliza o conteúdo dentro da barra */
     margin-right: 20px;
-}
-.search-bar input {
-    width: 100%;
-    max-width: 390px;
-    height: 30px;
-    padding-left: 10px;
-    margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.search-bar form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px; /* Espaçamento entre o input e o botão */
+    box-sizing: border-box;
 }
-.btn-pesquisar {
-    color: white;
-    background-color: var(--cor-primaria);
-    border: none;
+
+.search-bar .btn-pesquisar {
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
     cursor: pointer;
-    margin: 5px 5px;
+    transition: background-color 0.3s ease;
 }
-.btn-pesquisar:active{
+.search-bar .btn-pesquisar:hover {
+    background-color: var(--secundaria); /* Cor de fundo ao passar o mouse */
+}
+.btn-pesquisar2:active {
     background-color: rgba(0, 128, 0, 0.627);
 }
 body, ul {
@@ -132,13 +144,13 @@ article {
     align-items: center;
 }
 
-.recipe-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 25px;
-    margin-top: 20px;
-
+.recipe-image2 {
+    width: 400px; /* Definindo largura fixa */
+    height: 400px; /* Definindo altura fixa */
+    border-radius: 25px; /* Arredondamento das bordas */
+    object-fit: cover; /* Garante que a imagem preencha o contêiner sem distorcer */
+    overflow: hidden; /* Esconde qualquer parte da imagem que ultrapasse o contêiner */
+    margin-top: 20px; /* Margem superior */
 }
 
 .recipe-name {
@@ -263,7 +275,6 @@ ol {
     cursor: pointer;
 }
 
-
 .recipe-item:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -314,6 +325,6 @@ footer {
     }
 
     .recipe-image {
-        width: 100%;
+        width: 100px;
     }
 }

@@ -18,12 +18,14 @@
         </a>
     </div>
     <div class="search-bar">
-        <input type="text" placeholder="Procure uma receita, um ingrediente, um tipo de prato ...">
-        <button class="btn-pesquisar">Pesquisar</button>
+        <form action="listagem.php" method="get">
+            <input type="text" name="search" placeholder="Procure uma receita, um ingrediente, um tipo de prato ..." value="<?php echo isset($search_term) ? htmlspecialchars($search_term) : ''; ?>">
+            <button class="btn-pesquisar" type="submit">Pesquisar</button>
+        </form>
     </div>
     <div>
         <!--<img style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">-->
-        <img style="margin-right: 40px;" src="imagens\account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img style="margin-right: 40px;" src="imagens/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
     </div>
     <div class="adicionar-receita">
         <a href="addreceita.php" class="btn-receita">Adicionar Receita</a>
@@ -61,40 +63,43 @@
         'todas_as_receitas' => 'Todas as Receitas'
     );
 
-    // Obtém a categoria da URL
+    // Obtém a categoria e o termo de pesquisa da URL
     $category = isset($_GET['category']) ? $_GET['category'] : '';
+    $search_term = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Sanitização da variável para evitar SQL Injection
+    $search_term = $conn->real_escape_string($search_term);
 
     // Condição para exibir mensagens padrão ou listas de receitas
-    if (empty($category) || $category == 'todas_as_receitas') {
-        if ($category != 'todas_as_receitas') {
+    if (!empty($search_term) || $category == 'todas_as_receitas') {
+        // Consulta para obter todas as receitas com a imagem correspondente, filtrando pela busca
+        $sql = "
+            SELECT r.idreceitas, r.nome_receita, i.path AS img_path
+            FROM receitas r
+            LEFT JOIN img i ON r.img_id = i.id
+            WHERE r.nome_receita LIKE '%$search_term%'
+            ORDER BY r.nome_receita ASC
+        ";
+    } else {
+        if (empty($category) || $category == 'todas_as_receitas') {
             echo '<section class="welcome show">';
             echo '<h2>Bem-vindo ao KiDelicia!</h2>';
             echo '<p>Escolha uma categoria acima para começar a explorar nossas receitas deliciosas.</p>';
             echo '</section>';
         }
 
-        if ($category == 'todas_as_receitas') {
-            // Consulta para obter todas as receitas com a imagem correspondente
+        if (!empty($category) && $category != 'todas_as_receitas') {
+            // Sanitização da variável para evitar SQL Injection
+            $category = $conn->real_escape_string($category);
+
+            // Consulta para obter receitas da categoria selecionada com a imagem correspondente
             $sql = "
                 SELECT r.idreceitas, r.nome_receita, i.path AS img_path
                 FROM receitas r
                 LEFT JOIN img i ON r.img_id = i.id
-                ORDER BY r.nome_receita ASC
+                WHERE r.categoria='$category' AND r.nome_receita LIKE '%$search_term%'
             ";
-        } else {
-            $sql = "";
         }
-    } else {
-        // Sanitização da variável para evitar SQL Injection
-        $category = $conn->real_escape_string($category);
-
-        // Consulta para obter receitas da categoria selecionada com a imagem correspondente
-        $sql = "
-            SELECT r.idreceitas, r.nome_receita, i.path AS img_path
-            FROM receitas r
-            LEFT JOIN img i ON r.img_id = i.id
-            WHERE r.categoria='$category'
-        ";
     }
 
     if (!empty($sql)) {

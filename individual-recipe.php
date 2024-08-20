@@ -45,11 +45,13 @@ $stmt->fetch();
         </a>
     </div>
     <div class="search-bar">
-        <input type="text" placeholder="Procure uma receita, um ingrediente, um tipo de prato ...">
-        <button class="btn-pesquisar">Pesquisar</button>
+        <form action="listagem.php" method="get">
+            <input type="text" name="search" placeholder="Procure uma receita, um ingrediente, um tipo de prato ..." value="<?php echo isset($search_term) ? htmlspecialchars($search_term) : ''; ?>">
+            <button class="btn-pesquisar" type="submit">Pesquisar</button>
+        </form>
     </div>
     <div>
-        <img class="people-img" style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img class="people-img" style="margin-right: 40px;" src="imagens/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
     </div>
 </header>
 <nav>
@@ -85,8 +87,8 @@ $stmt->fetch();
                 <?php echo htmlspecialchars($descricao); ?>
             </p>
         </div>
-        <!-- Exibindo a imagem da receita -->
-        <img class="recipe-image" src="<?php echo htmlspecialchars($img_path); ?>" alt="Imagem da receita" onerror="this.src='default-image.jpg';">
+        <!-- Exibindo a imagem da receita EM TAMANHO MAXIMIZADO-->
+        <img class="recipe-image2" src="<?php echo htmlspecialchars($img_path); ?>" alt="Imagem da receita" onerror="this.src='default-image.jpg';">
     </article>
 
     <article>

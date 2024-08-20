@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
-/*Colors*/
+/* Colors */
 :root {
     --cor-primaria: #149c00;
     --secundaria: #4bbc1e;
 }
+
 /* Adicionar Receita */
 .adicionar-receita {
     position: fixed; 
@@ -29,7 +30,7 @@
     background-color: #4bbc1e; 
 }
 
-/*General Styling*/
+/* General Styling */
 * {
     margin: 0;
     padding: 0;
@@ -46,36 +47,44 @@ header {
     background-color: white;
 }
 
-/* Search Bar */
+/* Barra de Pesquisa */
 .search-bar {
     flex: 1;
     display: flex;
-    justify-content: center;
+    align-items: center; /* Alinha verticalmente o input e o botão */
+    justify-content: center; /* Centraliza o conteúdo dentro da barra */
     margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.search-bar form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
 }
 
 .search-bar input {
-    width: 100%;
-    max-width: 390px;
-    height: 30px;
-    padding-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    flex: 1;
+    padding: 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px; /* Espaçamento entre o input e o botão */
+    box-sizing: border-box;
 }
 
-.btn-pesquisar {
-    color: white;
-    background-color: var(--cor-primaria);
-    border: none;
+.search-bar .btn-pesquisar {
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
     cursor: pointer;
-    margin: 5px 5px;
+    transition: background-color 0.3s ease;
 }
 
-.btn-pesquisar:active {
-    background-color: rgba(0, 128, 0, 0.627);
+.search-bar .btn-pesquisar:hover {
+    background-color: var(--secundaria); /* Cor de fundo ao passar o mouse */
 }
 
 /* Navigation */
@@ -143,8 +152,8 @@ h2 {
 
 /* Additional Styles */
 .recipe-item {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     margin-top: 10px;
     transition: transform 0.3s ease;
 }
@@ -165,7 +174,61 @@ footer {
     list-style-type: none;
 }
 
-/* Media Queries */
+/* Estilo geral para a lista de receitas */
+.recipes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; /* Alinhamento à esquerda */
+    padding: 20px; /* Adiciona um espaçamento interno */
+}
+
+/* Estilo para cada item de receita */
+.recipe-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    width: 220px; /* Largura fixa para os itens da receita */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Adiciona um fundo branco aos itens */
+}
+
+/* Estilo para a imagem da receita */
+.recipe-image {
+    width: 220px; /* Largura padrão da imagem */
+    height: 220px; /* Altura fixa da imagem */
+    object-fit: cover; /* Mantém a proporção da imagem e preenche o container */
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem dentro do item da receita */
+}
+
+/* Estilo para o link dentro do item de receita */
+.recipe-item a {
+    text-decoration: none; /* Remove a sublinhação do link */
+    color: #333; /* Cor do texto do link */
+}
+
+/* Estilo para o texto do nome da receita */
+.recipe-item p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; /* Garante que o texto tenha uma cor visível */
+}
+
+.recipe-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.fa-utensils {
+    font-size: 26px;
+    margin-right: 3px;
+}
+
 @media (max-width: 768px) {
     .header-container {
         margin-left: 10px;
@@ -188,18 +251,4 @@ footer {
     .content {
         padding: 20px;
     }
-}
-.fa-utensils {
-  font-size: 26px;
-  margin-right: 3px;
-}
-.recipe-item {
-    display: inline-block;
-    margin: 10px;
-    text-align: center;
-}
-.recipe-image {
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
 }
