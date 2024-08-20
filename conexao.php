@@ -11,5 +11,4 @@ $mysqli = new mysqli($servidor, $usuario, $senha, $banco);
 //}
 //else
 //    echo "Conectado";
-
 ?>
