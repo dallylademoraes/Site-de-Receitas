@@ -51,8 +51,8 @@ header {
 .search-bar {
     flex: 1;
     display: flex;
-    align-items: center; /* Alinha verticalmente o input e o botão */
-    justify-content: center; /* Centraliza o conteúdo dentro da barra */
+    align-items: center; 
+    justify-content: center; 
     margin-right: 20px;
     margin-bottom: 10px;
 }
@@ -69,7 +69,7 @@ header {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    margin-right: 10px; /* Espaçamento entre o input e o botão */
+    margin-right: 10px; 
     box-sizing: border-box;
 }
 
@@ -84,7 +84,7 @@ header {
 }
 
 .search-bar .btn-pesquisar:hover {
-    background-color: var(--secundaria); /* Cor de fundo ao passar o mouse */
+    background-color: var(--secundaria); 
 }
 
 /* Navigation */
@@ -179,8 +179,8 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: flex-start; /* Alinhamento à esquerda */
-    padding: 20px; /* Adiciona um espaçamento interno */
+    justify-content: flex-start; 
+    padding: 20px; 
 }
 
 /* Estilo para cada item de receita */
@@ -189,24 +189,24 @@ footer {
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    width: 220px; /* Largura fixa para os itens da receita */
+    width: 220px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Adiciona um fundo branco aos itens */
+    background-color: #fff; 
 }
 
 /* Estilo para a imagem da receita */
 .recipe-image {
-    width: 220px; /* Largura padrão da imagem */
-    height: 220px; /* Altura fixa da imagem */
-    object-fit: cover; /* Mantém a proporção da imagem e preenche o container */
+    width: 220px; 
+    height: 220px;
+    object-fit: cover; 
     display: block;
-    margin: 0 auto; /* Centraliza a imagem dentro do item da receita */
+    margin: 0 auto; 
 }
 
 /* Estilo para o link dentro do item de receita */
 .recipe-item a {
-    text-decoration: none; /* Remove a sublinhação do link */
-    color: #333; /* Cor do texto do link */
+    text-decoration: none;
+    color: #333;
 }
 
 /* Estilo para o texto do nome da receita */
@@ -214,7 +214,7 @@ footer {
     margin: 10px 0;
     font-size: 16px;
     font-weight: bold;
-    color: #333; /* Garante que o texto tenha uma cor visível */
+    color: #333; 
 }
 
 .recipe-item img {
