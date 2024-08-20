@@ -1,0 +1,79 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  background-color: white;
+}
+.search-bar {
+  margin-right: 100px;
+}
+.search-bar input {
+  width: 340px;
+  height: 30px;
+  padding-left: 20px;
+}
+.btn-pesquisar {
+  color: white;
+  background-color: green;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-pesquisar:active{
+  background-color: rgba(0, 128, 0, 0.627);
+}
+body, ul {
+  margin: 0;
+  padding: 0;
+}
+nav {
+  background-color:green ;
+}
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+.menu li {
+  margin: 0;
+}
+.menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+.menu a:hover {
+  background-color: #66BB6A;
+}
+.content {
+  padding: 20px;
+}
+section {
+  display: none;
+}
+.show {
+  display: block;
+}
+h2 {
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+.welcome {
+  text-align: center;
+}
+.header-container{
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+}
+.header-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
