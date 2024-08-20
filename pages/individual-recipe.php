@@ -1,15 +1,27 @@
 <?php
-include_once('../mysql/connection.php');
+//include_once('../mysql/connection.php');
+include_once('connection.php');
 
 // Obtenha o ID da receita da URL
-$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    // Redirecione para a página de listagem ou categoria se o ID não for especificado
+    header("Location: http://localhost/Site-de-Receitas/listagem.php?category=" . urlencode($category));
+    exit();
+}
 
 // Prepare e execute a consulta
-$stmt = $conn->prepare("SELECT nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo, categoria FROM receitas WHERE idreceitas = ?");
+$stmt = $conn->prepare("
+    SELECT r.nome_receita, r.tempo_preparo, r.qtd_pessoas, r.autor, r.descricao, r.ingredientes, r.modo_preparo, r.categoria, i.path AS img_path
+    FROM receitas r
+    LEFT JOIN img i ON r.img_id = i.id
+    WHERE r.idreceitas = ?
+");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $stmt->store_result();
-$stmt->bind_result($nome_receita, $tempo_preparo, $qtd_pessoas, $autor, $descricao, $ingredientes, $modo_preparo, $categoria);
+$stmt->bind_result($nome_receita, $tempo_preparo, $qtd_pessoas, $autor, $descricao, $ingredientes, $modo_preparo, $categoria, $img_path);
 $stmt->fetch();
 ?>
 
@@ -18,7 +30,8 @@ $stmt->fetch();
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/bd4fd62cff.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/individual-recipe.css">
+    <!--<link rel="stylesheet" href="css/individual-recipe.css">-->
+    <link rel="stylesheet" href="individual-recipe.css">
     <title><?php echo htmlspecialchars($nome_receita); ?> - KiDelicia</title>
 </head>
 <body>
@@ -32,11 +45,13 @@ $stmt->fetch();
         </a>
     </div>
     <div class="search-bar">
-        <input type="text" placeholder="Procure uma receita, um ingrediente, um tipo de prato ...">
-        <button class="btn-pesquisar">Pesquisar</button>
+        <form action="listagem.php" method="get">
+            <input type="text" name="search" placeholder="Procure uma receita, um ingrediente, um tipo de prato ..." value="<?php echo isset($search_term) ? htmlspecialchars($search_term) : ''; ?>">
+            <button class="btn-pesquisar" type="submit">Pesquisar</button>
+        </form>
     </div>
     <div>
-        <img class="people-img" style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <img class="people-img" style="margin-right: 40px;" src="imagens/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
     </div>
 </header>
 <nav>
@@ -72,7 +87,8 @@ $stmt->fetch();
                 <?php echo htmlspecialchars($descricao); ?>
             </p>
         </div>
-        <img class="recipe-image" src="../src/bolo.png" alt="">
+        <!-- Exibindo a imagem da receita EM TAMANHO MAXIMIZADO-->
+        <img class="recipe-image2" src="<?php echo htmlspecialchars($img_path); ?>" alt="Imagem da receita" onerror="this.src='default-image.jpg';">
     </article>
 
     <article>
