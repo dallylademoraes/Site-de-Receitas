@@ -6,8 +6,11 @@ include_once('connection.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
-    // Redirecione para a página de listagem ou categoria se o ID não for especificado
-    header("Location: http://localhost/Site-de-Receitas/listagem.php?category=" . urlencode($category));
+    // Defina a URL de redirecionamento
+    $redirect_url = "http://localhost/Site-de-Receitas2/pagina-principal/listagem.php";
+    
+    // Redirecione para a página de listagem
+    header("Location: $redirect_url");
     exit();
 }
 
