@@ -1,11 +1,5 @@
 <?php
-        include_once('login.php');
-        $servidor = "localhost"; 
-        $banco = "banco_usuarios"; 
-        $usuario = "root";
-        $senha = ""; 
-        
-        $mysqli = new mysqli($servidor, $usuario, $senha, $banco);
+        include_once('conexao.php');
 
         if(isset($_POST['submit'])){
             if(strlen($_POST['username']) == 0){
@@ -46,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de login</title>
-    <link rel="stylesheet" href="style_login.css">
+    <link rel="stylesheet" href="login.css">
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 </head>
 
@@ -59,7 +53,7 @@
     </header>
 
     <div class="apresentacao">
-        <form class="caixa_fundo" method="POST" action="">
+        <form class="caixa_fundo" method="POST" action="login.php">
             <h1 class="titulo">Login</h1>
             <h3 class="campos">Usuário:</h3>
             <input class="bordas" id="campo_nome" type="text" name="username" placeholder="Nome usuário" required>
@@ -68,7 +62,7 @@
 
             <div class="botoes">
                 <input type="submit" name="submit" class="b1" >  
-                <a class="b2" href="cadastro.html">Cadastrar</a> 
+                <a class="b2" href="cadastro.php">Cadastrar</a> 
             </div>   
         </form>
             </div>
