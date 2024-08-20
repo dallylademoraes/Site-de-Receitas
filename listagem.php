@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiDelicia</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!--href="css/style.css"-->
     <script src="https://kit.fontawesome.com/ed615418ed.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -22,7 +22,11 @@
         <button class="btn-pesquisar">Pesquisar</button>
     </div>
     <div>
-        <img style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+        <!--<img style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">-->
+        <img style="margin-right: 40px;" src="imagens\account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">
+    </div>
+    <div class="adicionar-receita">
+        <a href="addreceita.php" class="btn-receita">Adicionar Receita</a>
     </div>
 </header>
 <nav>
@@ -41,7 +45,7 @@
 </nav>
 <div class="content">
     <?php
-    include_once('../mysql/connection.php');
+    include_once('connection.php'); //include_once('../mysql/connection.php');
 
     // Mapeamento de categorias para nomes amigáveis
     $category_names = array(
@@ -70,8 +74,13 @@
         }
 
         if ($category == 'todas_as_receitas') {
-            // Consulta para obter todas as receitas em ordem alfabética
-            $sql = "SELECT idreceitas, nome_receita FROM receitas ORDER BY nome_receita ASC";
+            // Consulta para obter todas as receitas com a imagem correspondente
+            $sql = "
+                SELECT r.idreceitas, r.nome_receita, i.path AS img_path
+                FROM receitas r
+                LEFT JOIN img i ON r.img_id = i.id
+                ORDER BY r.nome_receita ASC
+            ";
         } else {
             $sql = "";
         }
@@ -79,8 +88,13 @@
         // Sanitização da variável para evitar SQL Injection
         $category = $conn->real_escape_string($category);
 
-        // Consulta para obter receitas da categoria selecionada
-        $sql = "SELECT idreceitas, nome_receita FROM receitas WHERE categoria='$category'";
+        // Consulta para obter receitas da categoria selecionada com a imagem correspondente
+        $sql = "
+            SELECT r.idreceitas, r.nome_receita, i.path AS img_path
+            FROM receitas r
+            LEFT JOIN img i ON r.img_id = i.id
+            WHERE r.categoria='$category'
+        ";
     }
 
     if (!empty($sql)) {
@@ -100,7 +114,14 @@
             // Exibe as receitas da categoria
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="recipe-item">';
-                echo '<a href="individual-recipe.php?id=' . $row['idreceitas'] . '">' . htmlspecialchars($row['nome_receita']) . '</a>';
+                echo '<a href="individual-recipe.php?id=' . $row['idreceitas'] . '">';
+                if ($row['img_path']) {
+                    echo '<img src="' . htmlspecialchars($row['img_path']) . '" alt="Imagem da receita" class="recipe-image">';
+                } else {
+                    echo '<img src="imagens/default-image.jpg" alt="Imagem padrão" class="recipe-image">';
+                }
+                echo '<p>' . htmlspecialchars($row['nome_receita']) . '</p>';
+                echo '</a>';
                 echo '</div>';
             }
         } else {
