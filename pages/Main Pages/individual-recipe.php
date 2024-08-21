@@ -76,11 +76,11 @@ $stmt->fetch();
         <div class="recipe-info">
             <h1 class="recipe-name"><?php echo htmlspecialchars($nome_receita); ?></h1>
             <p class="recipe-serves">
-                Serve <?php echo htmlspecialchars($qtd_pessoas); ?> pessoas / <?php echo htmlspecialchars($tempo_preparo); ?> minutos de preparo
+                Serve <?php echo htmlspecialchars($qtd_pessoas); ?> pessoas / <?php echo htmlspecialchars($tempo_preparo); ?> para preparar
             </p>
-            <p>
-                Autor: <?php echo htmlspecialchars($autor); ?>
-            </p>
+<!--            <p>-->
+<!--                Autor: --><?php //echo htmlspecialchars($autor); ?>
+<!--            </p>-->
             <div class="socials">
                 <i class="fa-brands fa-instagram"></i>
                 <i class="fa-brands fa-twitter"></i>
@@ -118,24 +118,6 @@ $stmt->fetch();
                 }
                 ?>
             </ol>
-        </div>
-    </article>
-
-    <article id="discover-bottom">
-        <h3 class="txt">Descobrir mais receitas</h3>
-        <div class="discover-recipe">
-            <div class="recipe-item">
-                <img src="../src/recipe-item/img.png" alt="" width="300px">
-                <div class="bar">
-                    <p><a>BOLO DE LARANJA</a></p>
-                </div>
-            </div>
-            <div class="recipe-item">
-                <img src="../src/recipe-item/img.png" alt="" width="300px">
-                <div class="bar">
-                    <p><a>BOLO DE LARANJA</a></p>
-                </div>
-            </div>
         </div>
     </article>
 </main>

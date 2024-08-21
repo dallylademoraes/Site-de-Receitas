@@ -1,18 +1,24 @@
 <?php
-//include_once('../mysql/connection.php');
 include_once('connection.php');
+
 if (isset($_POST['submit'])) {
     $recipe_name = $_POST['recipe-name'];
     $recipe_serve = $_POST['recipe-serve'];
     $recipe_author = 'Luís Gustavo';
     $recipe_description = isset($_POST['recipe-desc']) ? strip_tags($_POST['recipe-desc']) : '';
 
-    if ($_POST['recipe-hour'] == 0) {
-        $recipe_time = $_POST['recipe-minute'] . ' minutos';
-    } else if ($_POST['recipe-minute'] == 0) {
-        $recipe_time = $_POST['recipe-hour'] . ' horas';
+    $recipe_hour = isset($_POST['recipe-hour']) ? (int)$_POST['recipe-hour'] : 0;
+    $recipe_minute = isset($_POST['recipe-minute']) ? (int)$_POST['recipe-minute'] : 0;
+
+
+    if ($recipe_hour > 0 && $recipe_minute > 0) {
+        $recipe_time = $recipe_hour . ' horas e ' . $recipe_minute . ' minutos';
+    } elseif ($recipe_hour > 0) {
+        $recipe_time = $recipe_hour . ' horas';
+    } elseif ($recipe_minute > 0) {
+        $recipe_time = $recipe_minute . ' minutos';
     } else {
-        $recipe_time = $_POST['recipe-hour'] . ' horas e ' . $_POST['recipe-minute'] . ' minutos';
+        $recipe_time = 'Tempo de preparo não especificado';
     }
 
     $ingredients = isset($_POST['ingredients']) ? strip_tags($_POST['ingredients']) : '';
@@ -50,7 +56,7 @@ if (isset($_POST['submit'])) {
 
         if ($stmt->execute()) {
             echo "Receita adicionada com sucesso!";
-            header("Location: ".$_SERVER['PHP_SELF']);
+            header("Location: " . $_SERVER['PHP_SELF']);
             exit();
         } else {
             echo "Erro ao adicionar receita: " . $stmt->error;
@@ -64,6 +70,7 @@ if (isset($_POST['submit'])) {
     $conn->close();
 }
 ?>
+
 
 
 <!DOCTYPE html>
