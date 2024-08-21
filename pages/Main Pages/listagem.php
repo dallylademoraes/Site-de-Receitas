@@ -29,6 +29,10 @@
     </div>
 
     <div class="adicionar-receita">
+        <a href="addreceita.php" class="btn-receita">Adicionar Receita</a>
+    </div>
+    
+    <div class="adicionar-receita">
     <form method="POST">
         <button type="submit" class="btn-receita" name="adicionar_receita">Adicionar Receita</button>
     </form>
@@ -53,17 +57,6 @@
 <div class="content">
     <?php
     include_once('connection.php');
-
-    if (isset($_POST['adicionar_receita'])) {
-        // Verifique se o usuário está logado
-        if (!isset($_SESSION['id'])) {
-            header("Location: login.php");
-            exit(); // Pare a execução do script após o redirecionamento
-        } else {
-            header("Location: addreceita.php");
-            exit(); // Pare a execução do script após o redirecionamento
-        }
-    }
 
     // Mapeamento de categorias para nomes amigáveis
     $category_names = array(
