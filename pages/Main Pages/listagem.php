@@ -31,13 +31,6 @@
     <div class="adicionar-receita">
         <a href="addreceita.php" class="btn-receita">Adicionar Receita</a>
     </div>
-    
-    <div class="adicionar-receita">
-    <form method="POST">
-        <button type="submit" class="btn-receita" name="adicionar_receita">Adicionar Receita</button>
-    </form>
-    </div>
-        
 
 </header>
 <nav>
@@ -83,12 +76,12 @@
     if (!empty($search_term) || $category == 'todas_as_receitas') {
         // Consulta para obter todas as receitas com a imagem correspondente, filtrando pela busca
         $sql = "
-            SELECT r.idreceitas, r.nome_receita, i.path AS img_path
-            FROM receitas r
-            LEFT JOIN img i ON r.img_id = i.id
-            WHERE r.nome_receita LIKE '%$search_term%'
-            ORDER BY r.nome_receita ASC
-        ";
+        SELECT r.idreceitas, r.nome_receita, i.path AS img_path
+        FROM receitas r
+        LEFT JOIN img i ON r.img_id = i.id
+        WHERE r.nome_receita LIKE '%$search_term%'
+        ORDER BY r.nome_receita ASC
+    ";
     } else {
         if (empty($category) || $category == 'todas_as_receitas') {
             echo '<section class="welcome show">';
@@ -103,11 +96,11 @@
 
             // Consulta para obter receitas da categoria selecionada com a imagem correspondente
             $sql = "
-                SELECT r.idreceitas, r.nome_receita, i.path AS img_path
-                FROM receitas r
-                LEFT JOIN img i ON r.img_id = i.id
-                WHERE r.categoria='$category' AND r.nome_receita LIKE '%$search_term%'
-            ";
+            SELECT r.idreceitas, r.nome_receita, i.path AS img_path
+            FROM receitas r
+            LEFT JOIN img i ON r.img_id = i.id
+            WHERE r.categoria='$category' AND r.nome_receita LIKE '%$search_term%'
+        ";
         }
     }
 

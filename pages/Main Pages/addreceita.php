@@ -10,7 +10,6 @@ if (isset($_POST['submit'])) {
     $recipe_hour = isset($_POST['recipe-hour']) ? (int)$_POST['recipe-hour'] : 0;
     $recipe_minute = isset($_POST['recipe-minute']) ? (int)$_POST['recipe-minute'] : 0;
 
-
     if ($recipe_hour > 0 && $recipe_minute > 0) {
         $recipe_time = $recipe_hour . ' horas e ' . $recipe_minute . ' minutos';
     } elseif ($recipe_hour > 0) {
@@ -25,7 +24,7 @@ if (isset($_POST['submit'])) {
     $preparation = isset($_POST['preparation']) ? strip_tags($_POST['preparation']) : '';
     $categoria = $_POST['recipe-categorias'];
 
-    $image_name = '';
+    $image_id = null;
     if (isset($_FILES['recipe_image']) && $_FILES['recipe_image']['error'] == 0) {
         $image_tmp_name = $_FILES['recipe_image']['tmp_name'];
         $image_name = basename($_FILES['recipe_image']['name']);
@@ -37,6 +36,7 @@ if (isset($_POST['submit'])) {
             if ($stmt_img = $conn->prepare($sql_img)) {
                 $stmt_img->bind_param('s', $target_file);
                 $stmt_img->execute();
+                $image_id = $stmt_img->insert_id; // Obtenha o ID da imagem inserida
                 $stmt_img->close();
             } else {
                 echo "Erro ao salvar o caminho da imagem: " . $conn->error;
@@ -48,11 +48,11 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    $sql = "INSERT INTO receitas (nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo, categoria) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO receitas (nome_receita, tempo_preparo, qtd_pessoas, autor, descricao, ingredientes, modo_preparo, categoria, img_id) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param('ssssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation, $categoria);
+        $stmt->bind_param('sssssssss', $recipe_name, $recipe_time, $recipe_serve, $recipe_author, $recipe_description, $ingredients, $preparation, $categoria, $image_id);
 
         if ($stmt->execute()) {
             echo "Receita adicionada com sucesso!";
