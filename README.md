@@ -70,7 +70,7 @@ O objetivo deste projeto é desenvolver uma plataforma online intuitiva e eficie
 <p>(não mude o diretório padrão 'C:\xampp)'</p>
 <p>4º passo: dê 'start' no Apache e MySQL</p>
 <p>5º passo: execute "localhost/dashboard/" no navegador, se entrar no site o XAMPP está funcionando</p>
-<p>(é importante a pasta Site-de-Receitas ficar salva na pasta htdocs encontrada no 'C:\xampp)</p>
+<p>(é importante a pasta Site-de-Receitas ficar salva na pasta htdocs encontrada no 'C:\xampp')</p>
 
 <h2>Banco de Dados</h2>
 <p>1º passo: no repositório acesse a pasta 'mysql' e copie o texto do arquivo 'kidelicia.sql'</p>
