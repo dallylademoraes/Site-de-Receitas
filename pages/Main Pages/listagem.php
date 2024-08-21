@@ -27,9 +27,14 @@
         <!--<img style="margin-right: 40px;" src="../src/account_circle_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Account">-->
         <img style="margin-right: 40px;" src="../src/icon-acc.svg" alt="Account">
     </div>
+
     <div class="adicionar-receita">
-        <a href="addreceita.php" class="btn-receita">Adicionar Receita</a>
+    <form method="POST">
+        <button type="submit" class="btn-receita" name="adicionar_receita">Adicionar Receita</button>
+    </form>
     </div>
+        
+
 </header>
 <nav>
     <ul class="menu">
@@ -48,6 +53,17 @@
 <div class="content">
     <?php
     include_once('connection.php');
+
+    if (isset($_POST['adicionar_receita'])) {
+        // Verifique se o usuário está logado
+        if (!isset($_SESSION['id'])) {
+            header("Location: login.php");
+            exit(); // Pare a execução do script após o redirecionamento
+        } else {
+            header("Location: addreceita.php");
+            exit(); // Pare a execução do script após o redirecionamento
+        }
+    }
 
     // Mapeamento de categorias para nomes amigáveis
     $category_names = array(
@@ -134,7 +150,6 @@
         }
 
         echo '</div></section>';
-
         // Fecha a conexão
         $conn->close();
     }

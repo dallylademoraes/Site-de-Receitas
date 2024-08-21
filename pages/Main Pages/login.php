@@ -7,11 +7,11 @@
             }else if(strlen($_POST['password']) == 0){
                 echo "Preencha sua senha";
             }else{
-                $username = $mysqli->real_escape_string($_POST['username']);
-                $password = $mysqli->real_escape_string($_POST['password']);
+                $username = $conn->real_escape_string($_POST['username']);
+                $password = $conn->real_escape_string($_POST['password']);
 
                 $sql_code = "SELECT * FROM usuarios WHERE nome_usuario = '$username' AND senha = '$password'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+                $sql_query = $conn->query($sql_code) or die("Falha na execução do código SQL: " . $conn->error);
 
                 $quantidade = $sql_query->num_rows;
 
@@ -30,7 +30,7 @@
                 }
             }
         }
-        ?>
+?>
 
 
 <!DOCTYPE html>
