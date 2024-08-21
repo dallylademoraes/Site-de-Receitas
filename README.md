@@ -73,7 +73,7 @@ O objetivo deste projeto é desenvolver uma plataforma online intuitiva e eficie
 <p>(é importante a pasta Site-de-Receitas ficar salva na pasta htdocs encontrada no 'C:\xampp')</p>
 
 <h2>Banco de Dados</h2>
-<p>1º passo: no repositório acesse a pasta 'mysql' e copie o texto do arquivo 'kidelicia.sql'</p>
+<p>1º passo: no repositório acesse a pasta 'mysql' na branch release/1.2 e copie o texto do arquivo 'kidelicia.sql'</p>
 <p>2º passo: entre no XAMPP e aperte em Admin do MySql</p>
 <p>3º passo: sendo redirecionado ao site phpMyAdmin acesse 'Banco de Dados' e crie um novo banco de dados com o nome 'kidelicia'</p>
 <p>4º passo: após a criação do banco acesse o campo SQL e cole o arquivo copiado no passo anterior</p>
