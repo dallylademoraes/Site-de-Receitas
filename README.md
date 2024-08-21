@@ -27,6 +27,9 @@ Edeílson Milhomem
   </tr>
 </table>
 
+### Vídeo de Apresentação do Projeto
+https://www.youtube.com/watch?v=dTwUQ7FXeHk
+
 ## Projeto
 ### Site de receitas culinárias
 ## Descrição Geral
@@ -69,7 +72,7 @@ O objetivo deste projeto é desenvolver uma plataforma online intuitiva e eficie
 <p>5º passo: execute "localhost/dashboard/" no navegador, se entrar no site o XAMPP está funcionando</p>
 
 <h2>Banco de Dados</h2>
-<p>1º passo: no repositório acesse a pasta 'mysql' e copie o texto do arquivo 'modelo.sql'</p>
+<p>1º passo: no repositório acesse a pasta 'mysql' e copie o texto do arquivo 'kidelicia.sql'</p>
 <p>2º passo: entre no XAMPP e aperte em Admin do MySql</p>
 <p>3º passo: sendo redirecionado ao site phpMyAdmin acesse 'Banco de Dados' e crie um novo banco de dados com o nome 'kidelicia'</p>
 <p>4º passo: após a criação do banco acesse o campo SQL e cole o arquivo copiado no passo anterior</p>
