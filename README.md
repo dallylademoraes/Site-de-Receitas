@@ -85,5 +85,9 @@ O objetivo deste projeto é desenvolver uma plataforma online intuitiva e eficie
 <p>Acesse pages->listagem.php</p>
 <p>Pronto!</p>
 
+<h2>Outra Observação</h2>
+<p>a versão mais atual do nosso projeto é a tag V1.2.1</p>
+<p>Em Full ChangeLog baixe a pasta zip 'Site-de-Receitas-release-1.2.zip'</p>
+
 #
 #
